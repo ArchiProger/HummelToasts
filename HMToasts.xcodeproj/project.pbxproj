@@ -11,6 +11,9 @@
 		75D9F6C82A336DFF001A3908 /* HMToasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D9F6BD2A336DFF001A3908 /* HMToasts.framework */; };
 		75D9F6CD2A336DFF001A3908 /* HMToastsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */; };
 		75D9F6CE2A336DFF001A3908 /* HMToasts.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D9F6C02A336DFF001A3908 /* HMToasts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D9F6D92A3374B6001A3908 /* ToastsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */; };
+		75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */; };
+		75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6DE2A338079001A3908 /* HMToastModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		75D9F6C12A336DFF001A3908 /* HMToasts.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = HMToasts.docc; sourceTree = "<group>"; };
 		75D9F6C72A336DFF001A3908 /* HMToastsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMToastsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastsTests.swift; sourceTree = "<group>"; };
+		75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastsModifier.swift; sourceTree = "<group>"; };
+		75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastsViewModel.swift; sourceTree = "<group>"; };
+		75D9F6DE2A338079001A3908 /* HMToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 		75D9F6BF2A336DFF001A3908 /* HMToasts */ = {
 			isa = PBXGroup;
 			children = (
+				75D9F6DD2A337E54001A3908 /* Model */,
+				75D9F6DA2A3378EC001A3908 /* ViewModel */,
 				75D9F6D72A33711F001A3908 /* View */,
 				75D9F6C02A336DFF001A3908 /* HMToasts.h */,
 				75D9F6C12A336DFF001A3908 /* HMToasts.docc */,
@@ -89,8 +97,25 @@
 		75D9F6D72A33711F001A3908 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		75D9F6DA2A3378EC001A3908 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		75D9F6DD2A337E54001A3908 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75D9F6DE2A338079001A3908 /* HMToastModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D9F6D92A3374B6001A3908 /* ToastsModifier.swift in Sources */,
 				75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */,
+				75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */,
+				75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +392,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,9 +404,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hummel.HMToasts;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -395,6 +427,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,15 +439,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hummel.HMToasts;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		75D9F6D52A336DFF001A3908 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4S5B9F55T;
@@ -431,6 +468,7 @@
 		75D9F6D62A336DFF001A3908 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4S5B9F55T;

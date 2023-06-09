@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct HMToastModel: Identifiable, Equatable {
+    
+    var id: UUID = .init()
+    var body: String
+}
