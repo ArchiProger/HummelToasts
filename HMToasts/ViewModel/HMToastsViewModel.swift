@@ -6,79 +6,110 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
+
+private struct ToastKey: EnvironmentKey {
+    // 1
+    static let defaultValue: Bool = false
+}
+
+extension EnvironmentValues {
+    var isToastActive: Bool {
+        get { self[ToastKey.self] }
+        set { self[ToastKey.self] = newValue }
+    }
+}
 
 public class HMToastsViewModel: ObservableObject {
     
-    @Published var isCurrentToastActive = false {
-        
-        didSet {
-            
-            guard oldValue != isCurrentToastActive, currentToast != nil else { return }
-            
-            if isCurrentToastActive {
-                
-                group.enter()
-                
-            } else {
-                
-                group.leave()
-            }
-        }
-    }
+    @Published var isToastActive = false
     
-    @Published private(set) var currentToast: HMToastModel? = nil
+    @Published private(set) var activeToast: HMToastModel? = nil
     
-    @Published private var toasts: [HMToastModel] = []
+    private var queue = DispatchQueue(label: "com.hummel.toasts")
+    private var cancellable: Set<AnyCancellable> = .init()
     
-    public static let shared: HMToastsViewModel = .init()
+    static let shared: HMToastsViewModel = .init()
     
-    private let queue = DispatchQueue(label: "com.hummel.HMToasts.queue")
-    private let group = DispatchGroup()
-    
-    internal var defaultAnimationSpeed: CGFloat!
-    internal var defaultToastDuration: CGFloat!
-    internal var defaultAnimation: Animation!
-    
-    private func showToast(_ toast: HMToastModel) {
-                                        
-        queue.async {
-                        
-            self.isCurrentToastActive = false
-            self.group.suspend()
-            self.group.enter()
-            
-            self.currentToast = toast
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + (toast.duration ?? self.defaultToastDuration)) {
-                
-                self.group.leave()
-            }
-            
-            self.group.wait()
-        }
+    private func pushToast(_ toast: HMToastModel, seconds: Float = 3) {
         
         queue.async {
             
             let group = DispatchGroup()
             group.enter()
             
-            self.currentToast = nil
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + (toast.animationSpeed ?? self.defaultAnimationSpeed)) {
-                                
+            Task {
+                
+                DispatchQueue.main.async {
+                    self.activeToast = toast
+                }
+                
+                self.$isToastActive
+                    .dropFirst()
+                    .removeDuplicates()
+                    .eraseToAnyPublisher()
+                    .receive(on: RunLoop.main)
+                    .sink { active in
+                        
+                        if active {
+                            group.enter()
+                        } else {
+                            group.leave()
+                        }
+                    }
+                    .store(in: &self.cancellable)
+                
+                try? await Task.sleep(nanoseconds: .init(seconds * 1_000_000_000))
+                
                 group.leave()
             }
             
             group.wait()
+        }
+        
+        queue.async {
+            
+            DispatchQueue.main.async {
+                self.activeToast = nil
+            }
         }
     }
 }
 
 extension HMToastsViewModel {
     
-    public func showCustomToast(systemImageName: String, color: Color, title: String, body: String) {
+    public func showCustomToast(systemImageName: String,
+                                color: Color,
+                                title: String,
+                                body: String,
+                                seconds: Float = 3
+    ) {
         
-        showToast(.init(systemImageName: systemImageName, color: color, title: title, body: body))
+        pushToast(.init(systemImageName: systemImageName, color: color, title: title, body: body), seconds: seconds)
+    }
+    
+    public func error(title: String,
+                      body: String,
+                      seconds: Float = 3
+    ) {
+        
+        showCustomToast(systemImageName: "exclamationmark.square.fill", color: .red, title: title, body: body, seconds: seconds)
+    }
+    
+    public func warning(title: String,
+                        body: String,
+                        seconds: Float = 3
+    ) {
+        
+        showCustomToast(systemImageName: "questionmark.square.fill", color: .yellow, title: title, body: body, seconds: seconds)
+    }
+    
+    public func notification(title: String,
+                             body: String,
+                             seconds: Float = 3
+    ) {
+        
+        showCustomToast(systemImageName: "info.square.fill", color: .blue, title: title, body: body, seconds: seconds)
     }
 }

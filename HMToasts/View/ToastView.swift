@@ -11,71 +11,31 @@ struct ToastView: View {
     
     let toast: HMToastModel
     
-    @Binding var isOpen: Bool
-    let onCloseButtonPress: () -> Void
+    @StateObject var toastViewModel: HMToastsViewModel = .shared
     
     var body: some View {
         
         HStack(spacing: 10) {
             
-            if isOpen {
+            Image(systemName: toast.systemImageName)
+                .foregroundStyle(toast.color)
+                .padding(10)
+                .background(toast.color.opacity(0.3))
+                .clipShape(Circle())
+            
+            VStack(alignment: .leading) {
                 
-                Image(systemName: toast.systemImageName)
+                Text(toast.title)
+                    .foregroundStyle(Color.primary)
+                    .font(.caption.weight(.bold))
+                
+                Text(toast.body)
                     .foregroundStyle(toast.color)
-                    .padding(10)
-                    .background(toast.color.opacity(0.3))
-                    .clipShape(Circle())
-                
-                VStack(alignment: .leading) {
-                    
-                    Text(toast.title)
-                        .foregroundStyle(Color.primary)
-                        .font(.caption.weight(.bold))
-                    
-                    Text(toast.body)
-                        .foregroundStyle(toast.color)
-                        .font(.caption2.weight(.bold))
-                }
-                .frame(maxWidth: isOpen ? .infinity : nil, alignment: .leading)
-                
-                Button(action: onCloseButtonPress) {
-                    
-                    Image(systemName: "xmark")
-                        .padding(.horizontal)
-                        .foregroundStyle(Color.gray)
-                }
-                
-            } else {
-                
-                Image(systemName: toast.systemImageName)
-                    .foregroundStyle(toast.color)
-                    .padding(10)
-                    .background(toast.color.opacity(0.3))
-                    .clipShape(Circle())
-                
-                VStack(alignment: .leading) {
-                    
-                    Text(toast.title)
-                        .foregroundStyle(Color.primary)
-                        .font(.caption.weight(.bold))
-                    
-                    Text(toast.body)
-                        .foregroundStyle(toast.color)
-                        .font(.caption2.weight(.bold))
-                }
-                
-                if isOpen {
-                    
-                    Button(action: onCloseButtonPress) {
-                        
-                        Image(systemName: "xmark")
-                            .padding(.horizontal)
-                            .foregroundStyle(Color.gray)
-                    }
-                }
+                    .font(.caption2.weight(.bold))
             }
         }
-        .padding(5)
+        .padding([.vertical, .leading], 5)
+        .padding(.trailing, 10)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 10)
@@ -85,6 +45,28 @@ struct ToastView: View {
                 .stroke(toast.color.opacity(0.7))
         }
         .padding()
+        .contextMenu(actions: [
+            
+            .init(title: "Copy", image: .init(systemName: "doc.on.doc")) { _ in
+                UIPasteboard.general.string = toast.body
+            },
+            
+            .init(title: "Close", image: .init(systemName: "xmark"), attributes: .destructive) { _ in
+                
+            }
+            
+        ], willEnd:  {
+           
+            withAnimation {
+                toastViewModel.isToastActive = false
+            }
+            
+        }, willDisplay:  {
+                        
+            withAnimation {
+                toastViewModel.isToastActive = true
+            }
+        })
     }
     
 }
@@ -93,6 +75,6 @@ struct ToastView_preview: PreviewProvider {
     
     static var previews: some View {
         
-        ToastView(toast: .init(systemImageName: "info.square.fill", color: .indigo, title: "Did you now?", body: "Some description"), isOpen: .constant(false), onCloseButtonPress: {})
+        ToastView(toast: .init(systemImageName: "info.square.fill", color: .indigo, title: "Did you now?", body: "Some description"))
     }
 }

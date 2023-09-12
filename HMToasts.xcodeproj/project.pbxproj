@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7586E29C2A35ED0D00BD1577 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586E29B2A35ED0D00BD1577 /* ToastView.swift */; };
+		75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D692612AB0FED500A19C7F /* ContextMenu.swift */; };
 		75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6C12A336DFF001A3908 /* HMToasts.docc */; };
 		75D9F6C82A336DFF001A3908 /* HMToasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D9F6BD2A336DFF001A3908 /* HMToasts.framework */; };
 		75D9F6CD2A336DFF001A3908 /* HMToastsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		7586E29B2A35ED0D00BD1577 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		75D692612AB0FED500A19C7F /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		75D9F6BD2A336DFF001A3908 /* HMToasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMToasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9F6C02A336DFF001A3908 /* HMToasts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMToasts.h; sourceTree = "<group>"; };
 		75D9F6C12A336DFF001A3908 /* HMToasts.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = HMToasts.docc; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */,
 				7586E29B2A35ED0D00BD1577 /* ToastView.swift */,
+				75D692612AB0FED500A19C7F /* ContextMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */,
 				75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */,
 				75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */,
+				75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */,
 				7586E29C2A35ED0D00BD1577 /* ToastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
