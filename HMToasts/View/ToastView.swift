@@ -11,7 +11,7 @@ struct ToastView: View {
     
     let toast: HMToastModel
     
-    @StateObject var toastViewModel: HMToastsViewModel = .shared
+    @StateObject var toastViewModel: HMToasts = .shared
     
     var body: some View {
         

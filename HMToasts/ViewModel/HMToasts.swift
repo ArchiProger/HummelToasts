@@ -9,7 +9,9 @@ import Foundation
 import Combine
 import SwiftUI
 
-public class HMToastsViewModel: ObservableObject {
+public class HMToasts: ObservableObject {
+    
+    public static let shared: HMToasts = .init()
     
     @Published var isToastActive = false
     
@@ -17,8 +19,6 @@ public class HMToastsViewModel: ObservableObject {
     
     private var queue = DispatchQueue(label: "com.hummel.toasts")
     private var cancellable: Set<AnyCancellable> = .init()
-    
-    static let shared: HMToastsViewModel = .init()
     
     private func pushToast(_ toast: HMToastModel, seconds: Float = 3) {
         
@@ -65,7 +65,7 @@ public class HMToastsViewModel: ObservableObject {
     }
 }
 
-extension HMToastsViewModel {
+extension HMToasts {
     
     public func showCustomToast(systemImageName: String,
                                 color: Color,

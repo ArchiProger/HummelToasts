@@ -19,7 +19,7 @@ extension View {
 
 fileprivate struct ToastsModifier: ViewModifier {
     
-    @StateObject private var toastViewModel: HMToastsViewModel = .shared
+    @StateObject private var toastViewModel: HMToasts = .shared
     
     func body(content: Content) -> some View {
         
@@ -58,7 +58,7 @@ struct ToastsWrapper_preview: PreviewProvider {
                 
                 counter += 1
                 
-                HMToastsViewModel.shared.showCustomToast(systemImageName: "globe", color: .green, title: "Titile", body: "BodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBody")
+                HMToasts.shared.showCustomToast(systemImageName: "globe", color: .green, title: "Titile", body: "BodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBody")
             }
         }
         .configureHummelToasts()

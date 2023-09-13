@@ -11,11 +11,11 @@
 		7586E29C2A35ED0D00BD1577 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586E29B2A35ED0D00BD1577 /* ToastView.swift */; };
 		75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D692612AB0FED500A19C7F /* ContextMenu.swift */; };
 		75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6C12A336DFF001A3908 /* HMToasts.docc */; };
-		75D9F6C82A336DFF001A3908 /* HMToasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D9F6BD2A336DFF001A3908 /* HMToasts.framework */; };
+		75D9F6C82A336DFF001A3908 /* Hummel_Toasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */; };
 		75D9F6CD2A336DFF001A3908 /* HMToastsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */; };
 		75D9F6CE2A336DFF001A3908 /* HMToasts.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D9F6C02A336DFF001A3908 /* HMToasts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D9F6D92A3374B6001A3908 /* ToastsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */; };
-		75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */; };
+		75D9F6DC2A337907001A3908 /* HMToasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6DB2A337907001A3908 /* HMToasts.swift */; };
 		75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6DE2A338079001A3908 /* HMToastModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,13 +33,13 @@
 		7556B2462AB1D9FF004E6E4C /* Offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offset.swift; sourceTree = "<group>"; };
 		7586E29B2A35ED0D00BD1577 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		75D692612AB0FED500A19C7F /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
-		75D9F6BD2A336DFF001A3908 /* HMToasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMToasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hummel_Toasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9F6C02A336DFF001A3908 /* HMToasts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMToasts.h; sourceTree = "<group>"; };
 		75D9F6C12A336DFF001A3908 /* HMToasts.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = HMToasts.docc; sourceTree = "<group>"; };
-		75D9F6C72A336DFF001A3908 /* HMToastsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMToastsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D9F6C72A336DFF001A3908 /* Hummel ToastsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hummel ToastsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastsTests.swift; sourceTree = "<group>"; };
 		75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastsModifier.swift; sourceTree = "<group>"; };
-		75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastsViewModel.swift; sourceTree = "<group>"; };
+		75D9F6DB2A337907001A3908 /* HMToasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToasts.swift; sourceTree = "<group>"; };
 		75D9F6DE2A338079001A3908 /* HMToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMToastModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75D9F6C82A336DFF001A3908 /* HMToasts.framework in Frameworks */,
+				75D9F6C82A336DFF001A3908 /* Hummel_Toasts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,8 +74,8 @@
 		75D9F6BE2A336DFF001A3908 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75D9F6BD2A336DFF001A3908 /* HMToasts.framework */,
-				75D9F6C72A336DFF001A3908 /* HMToastsTests.xctest */,
+				75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */,
+				75D9F6C72A336DFF001A3908 /* Hummel ToastsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 		75D9F6DA2A3378EC001A3908 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				75D9F6DB2A337907001A3908 /* HMToastsViewModel.swift */,
+				75D9F6DB2A337907001A3908 /* HMToasts.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -141,9 +141,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		75D9F6BC2A336DFF001A3908 /* HMToasts */ = {
+		75D9F6BC2A336DFF001A3908 /* Hummel Toasts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75D9F6D12A336DFF001A3908 /* Build configuration list for PBXNativeTarget "HMToasts" */;
+			buildConfigurationList = 75D9F6D12A336DFF001A3908 /* Build configuration list for PBXNativeTarget "Hummel Toasts" */;
 			buildPhases = (
 				75D9F6B82A336DFF001A3908 /* Headers */,
 				75D9F6B92A336DFF001A3908 /* Sources */,
@@ -154,14 +154,14 @@
 			);
 			dependencies = (
 			);
-			name = HMToasts;
+			name = "Hummel Toasts";
 			productName = HMToasts;
-			productReference = 75D9F6BD2A336DFF001A3908 /* HMToasts.framework */;
+			productReference = 75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		75D9F6C62A336DFF001A3908 /* HMToastsTests */ = {
+		75D9F6C62A336DFF001A3908 /* Hummel ToastsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75D9F6D42A336DFF001A3908 /* Build configuration list for PBXNativeTarget "HMToastsTests" */;
+			buildConfigurationList = 75D9F6D42A336DFF001A3908 /* Build configuration list for PBXNativeTarget "Hummel ToastsTests" */;
 			buildPhases = (
 				75D9F6C32A336DFF001A3908 /* Sources */,
 				75D9F6C42A336DFF001A3908 /* Frameworks */,
@@ -172,9 +172,9 @@
 			dependencies = (
 				75D9F6CA2A336DFF001A3908 /* PBXTargetDependency */,
 			);
-			name = HMToastsTests;
+			name = "Hummel ToastsTests";
 			productName = HMToastsTests;
-			productReference = 75D9F6C72A336DFF001A3908 /* HMToastsTests.xctest */;
+			productReference = 75D9F6C72A336DFF001A3908 /* Hummel ToastsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,7 +195,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 75D9F6B72A336DFF001A3908 /* Build configuration list for PBXProject "HMToasts" */;
+			buildConfigurationList = 75D9F6B72A336DFF001A3908 /* Build configuration list for PBXProject "Hummel Toasts" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -208,8 +208,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				75D9F6BC2A336DFF001A3908 /* HMToasts */,
-				75D9F6C62A336DFF001A3908 /* HMToastsTests */,
+				75D9F6BC2A336DFF001A3908 /* Hummel Toasts */,
+				75D9F6C62A336DFF001A3908 /* Hummel ToastsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,7 +240,7 @@
 				75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */,
 				7556B2472AB1D9FF004E6E4C /* Offset.swift in Sources */,
 				75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */,
-				75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */,
+				75D9F6DC2A337907001A3908 /* HMToasts.swift in Sources */,
 				75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */,
 				7586E29C2A35ED0D00BD1577 /* ToastView.swift in Sources */,
 			);
@@ -259,7 +259,7 @@
 /* Begin PBXTargetDependency section */
 		75D9F6CA2A336DFF001A3908 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 75D9F6BC2A336DFF001A3908 /* HMToasts */;
+			target = 75D9F6BC2A336DFF001A3908 /* Hummel Toasts */;
 			targetProxy = 75D9F6C92A336DFF001A3908 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -497,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		75D9F6B72A336DFF001A3908 /* Build configuration list for PBXProject "HMToasts" */ = {
+		75D9F6B72A336DFF001A3908 /* Build configuration list for PBXProject "Hummel Toasts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D9F6CF2A336DFF001A3908 /* Debug */,
@@ -506,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D9F6D12A336DFF001A3908 /* Build configuration list for PBXNativeTarget "HMToasts" */ = {
+		75D9F6D12A336DFF001A3908 /* Build configuration list for PBXNativeTarget "Hummel Toasts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D9F6D22A336DFF001A3908 /* Debug */,
@@ -515,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D9F6D42A336DFF001A3908 /* Build configuration list for PBXNativeTarget "HMToastsTests" */ = {
+		75D9F6D42A336DFF001A3908 /* Build configuration list for PBXNativeTarget "Hummel ToastsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D9F6D52A336DFF001A3908 /* Debug */,
