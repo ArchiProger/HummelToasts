@@ -10,71 +10,83 @@ import SwiftUI
 
 extension View {
     
-    func contextMenu(actions: [UIAction], willEnd: (() -> Void)? = nil, willDisplay: (() -> Void)? = nil) -> some View {
-        modifier(ContextMenuViewModifier(actions: actions, willEnd: willEnd, willDisplay: willDisplay))
+    @ViewBuilder
+    func contextMenu(_ actions: [UIAction],
+                     onAppear: (() -> Void)? = nil,
+                     onDismiss: (() -> Void)? = nil
+    ) -> some View {
+        self
+            .modifier(ContextMenuModifier(actions: actions, onAppear: onAppear, onDismiss: onDismiss))
     }
 }
 
-struct ContextMenuViewModifier: ViewModifier {
+struct ContextMenuModifier: ViewModifier {
     let actions: [UIAction]
-    let willEnd: (() -> Void)?
-    let willDisplay: (() -> Void)?
+    let onAppear: (() -> Void)?
+    let onDismiss: (() -> Void)?
+    
+    @State private var size: CGSize? = nil
     
     func body(content: Content) -> some View {
-        Interaction_UI(view: {content}, actions: actions, willEnd: willEnd, willDisplay: willDisplay)
-            .fixedSize()
+        
+        ContextMenuController(actions: actions, onAppear: onAppear, onDismiss: onDismiss) {
+            
+            content
+                .size { size in
+                    self.size = size
+                }
+        }
+        .frame(width: size?.width, height: size?.height)
     }
 }
 
-struct Interaction_UI<Content: View>: UIViewRepresentable {
-    
-    typealias UIViewControllerType = UIView
-    
-    @ViewBuilder var view: Content
+struct ContextMenuController<Content: View>: UIViewControllerRepresentable {
     
     let actions: [UIAction]
-    let willEnd: (() -> Void)?
-    let willDisplay: (() -> Void)?
+    let onAppear: (() -> Void)?
+    let onDismiss: (() -> Void)?
+    
+    @ViewBuilder let view: Content
+        
+    func makeUIViewController(context: Context) -> some UIViewController {
+        
+        let contextMenu = UIContextMenuInteraction(delegate: context.coordinator)
+        let controller = UIHostingController(rootView: view)
+        controller.view.addInteraction(contextMenu)
+        
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {  }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
+        
+        return Coordinator(self)
     }
     
-    func makeUIView(context: Context) -> some UIView {
+    class Coordinator: NSObject, UIContextMenuInteractionDelegate {
+        let parent: ContextMenuController
         
-        let v = UIHostingController(rootView: view).view!
-        context.coordinator.contextMenu = UIContextMenuInteraction(delegate: context.coordinator)
-        v.addInteraction(context.coordinator.contextMenu!)
-        return v
-    }
-    
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
-    }
-    
-    class Coordinator: NSObject,  UIContextMenuInteractionDelegate{
-        var contextMenu: UIContextMenuInteraction!
-        
-        let parent: Interaction_UI
-        
-        init(parent: Interaction_UI) {
+        init(_ parent: ContextMenuController) {
             self.parent = parent
         }
         
         func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-            UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { [self]
-                suggestedActions in
+            
+            UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [self] suggestedActions in
                 
                 return UIMenu(title: "", children: parent.actions)
-            })
+            }
         }
-        
+                
         func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willDisplayMenuFor configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
-            parent.willDisplay?()
+            
+            parent.onAppear?()
         }
         
         func contextMenuInteraction(_ interaction: UIContextMenuInteraction, willEndFor configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
-            parent.willEnd?()
+            
+            parent.onDismiss?()
         }
     }
 }

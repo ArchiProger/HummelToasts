@@ -9,18 +9,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-private struct ToastKey: EnvironmentKey {
-    // 1
-    static let defaultValue: Bool = false
-}
-
-extension EnvironmentValues {
-    var isToastActive: Bool {
-        get { self[ToastKey.self] }
-        set { self[ToastKey.self] = newValue }
-    }
-}
-
 public class HMToastsViewModel: ObservableObject {
     
     @Published var isToastActive = false

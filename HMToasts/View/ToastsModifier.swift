@@ -17,7 +17,7 @@ extension View {
     }
 }
 
-struct ToastsModifier: ViewModifier {
+fileprivate struct ToastsModifier: ViewModifier {
     
     @StateObject private var toastViewModel: HMToastsViewModel = .shared
     
@@ -46,20 +46,19 @@ struct ToastsModifier: ViewModifier {
 
 struct ToastsWrapper_preview: PreviewProvider {
     
+    @State static var counter = 0
+    
     static var previews: some View {
         
-        ZStack {
+        VStack(spacing: 20) {
             
-//            Color.cyan.ignoresSafeArea()
+            Image(systemName: "globe")
             
-            VStack(spacing: 20) {
+            Button("Show Notification \(counter)") {
                 
-                Image(systemName: "globe")
+                counter += 1
                 
-                Button("Show Notification") {                                        
-                    
-                    HMToastsViewModel.shared.notification(title: "Notification \(Int.random(in: 0...255))", body: "Some notification")
-                }
+                HMToastsViewModel.shared.showCustomToast(systemImageName: "globe", color: .green, title: "Titile", body: "BodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBody")
             }
         }
         .configureHummelToasts()

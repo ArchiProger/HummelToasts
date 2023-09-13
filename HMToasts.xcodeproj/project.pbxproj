@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7556B2472AB1D9FF004E6E4C /* Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556B2462AB1D9FF004E6E4C /* Offset.swift */; };
 		7586E29C2A35ED0D00BD1577 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7586E29B2A35ED0D00BD1577 /* ToastView.swift */; };
 		75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D692612AB0FED500A19C7F /* ContextMenu.swift */; };
 		75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6C12A336DFF001A3908 /* HMToasts.docc */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7556B2462AB1D9FF004E6E4C /* Offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offset.swift; sourceTree = "<group>"; };
 		7586E29B2A35ED0D00BD1577 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		75D692612AB0FED500A19C7F /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		75D9F6BD2A336DFF001A3908 /* HMToasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMToasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				75D9F6D82A3374B6001A3908 /* ToastsModifier.swift */,
 				7586E29B2A35ED0D00BD1577 /* ToastView.swift */,
 				75D692612AB0FED500A19C7F /* ContextMenu.swift */,
+				7556B2462AB1D9FF004E6E4C /* Offset.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				75D9F6D92A3374B6001A3908 /* ToastsModifier.swift in Sources */,
 				75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */,
+				7556B2472AB1D9FF004E6E4C /* Offset.swift in Sources */,
 				75D9F6DF2A338079001A3908 /* HMToastModel.swift in Sources */,
 				75D9F6DC2A337907001A3908 /* HMToastsViewModel.swift in Sources */,
 				75D692622AB0FED500A19C7F /* ContextMenu.swift in Sources */,
@@ -417,7 +421,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -452,7 +456,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

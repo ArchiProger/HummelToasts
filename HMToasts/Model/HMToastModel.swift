@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-struct HMToastModel: Identifiable, Equatable {
+public struct HMToastModel: Identifiable, Equatable {
     
-    let id: UUID = .init()
-    let systemImageName: String
-    let color: Color
-    let title: String
-    let body: String
+    public let id: UUID = .init()
+    public let systemImageName: String
+    public let color: Color
+    public let title: String
+    public let body: String
 }

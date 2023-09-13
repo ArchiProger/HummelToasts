@@ -32,7 +32,7 @@ struct ToastView: View {
                 Text(toast.body)
                     .foregroundStyle(toast.color)
                     .font(.caption2.weight(.bold))
-            }
+            }            
         }
         .padding([.vertical, .leading], 5)
         .padding(.trailing, 10)
@@ -44,29 +44,23 @@ struct ToastView: View {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(toast.color.opacity(0.7))
         }
-        .padding()
-        .contextMenu(actions: [
-            
+        .contextMenu([
             .init(title: "Copy", image: .init(systemName: "doc.on.doc")) { _ in
                 UIPasteboard.general.string = toast.body
             },
             
-            .init(title: "Close", image: .init(systemName: "xmark"), attributes: .destructive) { _ in
+            .init(title: "Close", image: .init(systemName: "xmark.circle"), attributes: .destructive) { _ in
                 
             }
-            
-        ], willEnd:  {
-           
-            withAnimation {
-                toastViewModel.isToastActive = false
-            }
-            
-        }, willDisplay:  {
-                        
+        ]) {
             withAnimation {
                 toastViewModel.isToastActive = true
             }
-        })
+        } onDismiss: {
+            withAnimation {
+                toastViewModel.isToastActive = false
+            }
+        }
     }
     
 }
@@ -75,6 +69,6 @@ struct ToastView_preview: PreviewProvider {
     
     static var previews: some View {
         
-        ToastView(toast: .init(systemImageName: "info.square.fill", color: .indigo, title: "Did you now?", body: "Some description"))
+        ToastView(toast: .init(systemImageName: "info.square.fill", color: .indigo, title: "Did you now?", body: "Some description jgireajgioreajigjeaijgioeajgioejraigjerajgioer'ajgieargjieajgijeariojgieragjieajgiojeraiojgioreajgioeajgijeraiojgeraio"))
     }
 }
