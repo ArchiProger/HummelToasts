@@ -65,7 +65,7 @@
 		75D9F6B32A336DFF001A3908 = {
 			isa = PBXGroup;
 			children = (
-				75D9F6BF2A336DFF001A3908 /* HMToasts */,
+				75D9F6BF2A336DFF001A3908 /* Hummel Toasts */,
 				75D9F6CB2A336DFF001A3908 /* HMToastsTests */,
 				75D9F6BE2A336DFF001A3908 /* Products */,
 			);
@@ -80,7 +80,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		75D9F6BF2A336DFF001A3908 /* HMToasts */ = {
+		75D9F6BF2A336DFF001A3908 /* Hummel Toasts */ = {
 			isa = PBXGroup;
 			children = (
 				75D9F6DD2A337E54001A3908 /* Model */,
@@ -89,7 +89,7 @@
 				75D9F6C02A336DFF001A3908 /* HMToasts.h */,
 				75D9F6C12A336DFF001A3908 /* HMToasts.docc */,
 			);
-			path = HMToasts;
+			path = "Hummel Toasts";
 			sourceTree = "<group>";
 		};
 		75D9F6CB2A336DFF001A3908 /* HMToastsTests */ = {
