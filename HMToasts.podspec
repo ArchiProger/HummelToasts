@@ -10,10 +10,7 @@ Pod::Spec.new do |spec|
 
   spec.ios.deployment_target  = '15.0'
 
-  spec.source_files  = 'HMToasts/Model/*.swift'
-  spec.source_files  = 'HMToasts/View/*.swift'
-  spec.source_files  = 'HMToasts/ViewModel/*.swift'
-  spec.source_files  = 'HMToasts/*.swift'
+  spec.source_files  = 'HMToasts/**/*.swift'
 
   spec.ios.framework  = 'SwiftUI'
   spec.platform = :ios, '15.0'
