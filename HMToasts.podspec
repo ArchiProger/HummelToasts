@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name          = 'HMToasts'
+  spec.name          = 'HummelToasts'
   spec.version       = '1.0.0'
   spec.license       = 'MIT'
   spec.homepage      = 'https://github.com/ArchiProger/HMToasts'
@@ -14,6 +14,4 @@ Pod::Spec.new do |spec|
 
   spec.ios.framework  = 'SwiftUI'
   spec.platform = :ios, '15.0'
-
-  # spec.dependency 'SomeOtherPod'
 end
