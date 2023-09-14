@@ -21,7 +21,7 @@ public class HMToasts: ObservableObject {
     private var queue = DispatchQueue(label: "com.hummel.toasts")
     private var cancellable: Set<AnyCancellable> = .init()
     
-    private func pushToast(_ toast: HMToastModel, seconds: Double = 3) {
+    private func pushToast(_ toast: HMToastModel, seconds: Double = 3, onDelivered: (() -> Void)? = nil) {
         
         queue.async {
             
@@ -33,6 +33,8 @@ public class HMToasts: ObservableObject {
                 DispatchQueue.main.async {
                     self.activeToast = toast
                 }
+                
+                onDelivered?()
                 
                 self.$isToastActive
                     .dropFirst()
@@ -103,24 +105,56 @@ extension HMToasts {
         }
     }
     
-    public func notification(title: String, body: String, style: NotificationStyle, seconds: Double = 3) {
+    public func notification(title: String,
+                             body: String,
+                             style: NotificationStyle,
+                             seconds: Double = 3,
+                             feedback: Bool = true,
+                             onDelivered: (() -> Void)? = nil
+    ) {
         
         let toast = style.generateToast(title: title, body: body)
         
-        pushToast(toast, seconds: seconds)
+        pushToast(toast, seconds: seconds) {
+            
+            onDelivered?()
+            
+            if feedback {
+                
+                let feedback = UINotificationFeedbackGenerator()
+                
+                switch style {
+                    case .warning: feedback.notificationOccurred(.warning)
+                    case .error: feedback.notificationOccurred(.error)
+                    default: feedback.notificationOccurred(.success)
+                }
+            }
+        }
     }
     
-    public func notification(title: String, body: String, image: String, color: Color, seconds: Double = 3) {
+    public func notification(title: String,
+                             body: String,
+                             image: String,
+                             color: Color,
+                             seconds: Double = 3,
+                             onDelivered: (() -> Void)? = nil
+    ) {
         
         let toast: HMToastModel = .init(image: .init(image), color: color, title: title, body: body)
         
-        pushToast(toast, seconds: seconds)
+        pushToast(toast, seconds: seconds, onDelivered: onDelivered)
     }
     
-    public func notification(title: String, body: String, systemImage: String, color: Color, seconds: Double = 3) {
+    public func notification(title: String,
+                             body: String,
+                             systemImage: String,
+                             color: Color,
+                             seconds: Double = 3,
+                             onDelivered: (() -> Void)? = nil
+    ) {
         
         let toast: HMToastModel = .init(image: .init(systemName: systemImage), color: color, title: title, body: body)
         
-        pushToast(toast, seconds: seconds)
+        pushToast(toast, seconds: seconds, onDelivered: onDelivered)
     }
 }
