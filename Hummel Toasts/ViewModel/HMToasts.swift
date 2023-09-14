@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import OSLog
 
 public class HMToasts: ObservableObject {
     
@@ -20,7 +21,7 @@ public class HMToasts: ObservableObject {
     private var queue = DispatchQueue(label: "com.hummel.toasts")
     private var cancellable: Set<AnyCancellable> = .init()
     
-    private func pushToast(_ toast: HMToastModel, seconds: Float = 3) {
+    private func pushToast(_ toast: HMToastModel, seconds: Double = 3) {
         
         queue.async {
             
@@ -67,37 +68,59 @@ public class HMToasts: ObservableObject {
 
 extension HMToasts {
     
-    public func showCustomToast(systemImageName: String,
-                                color: Color,
-                                title: String,
-                                body: String,
-                                seconds: Float = 3
-    ) {
+    public enum NotificationStyle {
         
-        pushToast(.init(systemImageName: systemImageName, color: color, title: title, body: body), seconds: seconds)
+        case info
+        case warning
+        case error
+        case success
+        
+        func generateToast(title: String, body: String) -> HMToastModel {
+            
+            switch self {
+                case .info: 
+                    return .init(image: .init(systemName: "info.square.fill"),
+                                 color: .blue,
+                                 title: title,
+                                 body: body)
+                case .warning:
+                    return .init(image: .init(systemName: "questionmark.square.fill"),
+                                 color: .yellow,
+                                 title: title,
+                                 body: body)
+                case .error:
+                    return .init(image: .init(systemName: "exclamationmark.square.fill"),
+                                 color: .red,
+                                 title: title,
+                                 body: body)
+                    
+                case .success:
+                    return .init(image: .init(systemName: "checkmark.circle.fill"),
+                                 color: .green,
+                                 title: title,
+                                 body: body)
+            }
+        }
     }
     
-    public func error(title: String,
-                      body: String,
-                      seconds: Float = 3
-    ) {
+    public func notification(title: String, body: String, style: NotificationStyle, seconds: Double = 3) {
         
-        showCustomToast(systemImageName: "exclamationmark.square.fill", color: .red, title: title, body: body, seconds: seconds)
+        let toast = style.generateToast(title: title, body: body)
+        
+        pushToast(toast, seconds: seconds)
     }
     
-    public func warning(title: String,
-                        body: String,
-                        seconds: Float = 3
-    ) {
+    public func notification(title: String, body: String, image: String, color: Color, seconds: Double = 3) {
         
-        showCustomToast(systemImageName: "questionmark.square.fill", color: .yellow, title: title, body: body, seconds: seconds)
+        let toast: HMToastModel = .init(image: .init(image), color: color, title: title, body: body)
+        
+        pushToast(toast, seconds: seconds)
     }
     
-    public func notification(title: String,
-                             body: String,
-                             seconds: Float = 3
-    ) {
+    public func notification(title: String, body: String, systemImage: String, color: Color, seconds: Double = 3) {
         
-        showCustomToast(systemImageName: "info.square.fill", color: .blue, title: title, body: body, seconds: seconds)
+        let toast: HMToastModel = .init(image: .init(systemName: systemImage), color: color, title: title, body: body)
+        
+        pushToast(toast, seconds: seconds)
     }
 }

@@ -17,7 +17,8 @@ struct ToastView: View {
         
         HStack(spacing: 10) {
             
-            Image(systemName: toast.systemImageName)
+            toast.image
+                .renderingMode(.template)
                 .foregroundStyle(toast.color)
                 .padding(10)
                 .background(toast.color.opacity(0.3))
@@ -69,6 +70,6 @@ struct ToastView_preview: PreviewProvider {
     
     static var previews: some View {
         
-        ToastView(toast: .init(systemImageName: "info.square.fill", color: .indigo, title: "Did you now?", body: "Some description jgireajgioreajigjeaijgioeajgioejraigjerajgioer'ajgieargjieajgijeariojgieragjieajgiojeraiojgioreajgioeajgijeraiojgeraio"))
+        ToastView(toast: HMToasts.NotificationStyle.info.generateToast(title: "Error", body: "Notification Body"))
     }
 }

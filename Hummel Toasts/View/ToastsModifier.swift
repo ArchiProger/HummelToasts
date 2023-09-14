@@ -58,7 +58,7 @@ struct ToastsWrapper_preview: PreviewProvider {
                 
                 counter += 1
                 
-                HMToasts.shared.showCustomToast(systemImageName: "globe", color: .green, title: "Titile", body: "BodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBodyBody")
+                HMToasts.shared.notification(title: "Custom notification", body: "Notification Body", image: "globe", color: .pink, seconds: 5)
             }
         }
         .configureHummelToasts()

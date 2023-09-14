@@ -11,7 +11,7 @@ import SwiftUI
 public struct HMToastModel: Identifiable, Equatable {
     
     public let id: UUID = .init()
-    public let systemImageName: String
+    public let image: Image
     public let color: Color
     public let title: String
     public let body: String
