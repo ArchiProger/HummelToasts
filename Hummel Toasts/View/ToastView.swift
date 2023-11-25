@@ -37,7 +37,7 @@ struct ToastView: View {
         }
         .padding([.vertical, .leading], 5)
         .padding(.trailing, 10)
-        .background(.background)
+        .background(.regularMaterial)
         .shadow(radius: 10)
         .overlay {
             

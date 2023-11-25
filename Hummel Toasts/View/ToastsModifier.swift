@@ -28,7 +28,7 @@ fileprivate struct ToastsModifier: ViewModifier {
             content
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .bottom) {
+        .overlay(alignment: .top) {
             
             Group {
                 
