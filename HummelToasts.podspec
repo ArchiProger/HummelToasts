@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name          = 'HummelToasts'
-  spec.version       = '1.0.0'
+  spec.version       = '1.0.1'
   spec.license       = 'MIT'
   spec.homepage      = 'https://github.com/ArchiProger/HummelToasts'
   spec.authors       = { 'Arthur Danilov' => 'danilov985@icloud.com' }
