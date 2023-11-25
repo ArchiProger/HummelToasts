@@ -38,7 +38,6 @@ struct ToastView: View {
         .padding([.vertical, .leading], 5)
         .padding(.trailing, 10)
         .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 10)
         .overlay {
             
@@ -62,14 +61,19 @@ struct ToastView: View {
                 toastViewModel.isToastActive = false
             }
         }
+        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
-    
 }
 
 struct ToastView_preview: PreviewProvider {
     
     static var previews: some View {
         
-        ToastView(toast: HMToasts.NotificationStyle.info.generateToast(title: "Error", body: "Notification Body"))
+        ZStack {
+            
+            Color.gray.ignoresSafeArea()
+            
+            ToastView(toast: HMToasts.NotificationStyle.info.generateToast(title: "Error", body: "Notification Body"))
+        }
     }
 }

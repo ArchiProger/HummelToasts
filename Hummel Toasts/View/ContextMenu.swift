@@ -52,6 +52,7 @@ struct ContextMenuController<Content: View>: UIViewControllerRepresentable {
         
         let contextMenu = UIContextMenuInteraction(delegate: context.coordinator)
         let controller = UIHostingController(rootView: view)
+        controller.view.backgroundColor = .clear
         controller.view.addInteraction(contextMenu)
         
         return controller

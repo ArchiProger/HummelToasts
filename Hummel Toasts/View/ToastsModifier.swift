@@ -49,16 +49,19 @@ struct ToastsWrapper_preview: PreviewProvider {
     @State static var counter = 0
     
     static var previews: some View {
-        
-        VStack(spacing: 20) {
+        ZStack {
+            Color.gray.ignoresSafeArea()
             
-            Image(systemName: "globe")
-            
-            Button("Show Notification \(counter)") {
+            VStack(spacing: 20) {
                 
-                counter += 1
+                Image(systemName: "globe")
                 
-                HMToasts.shared.notification(title: "Custom notification", body: "Notification Body", image: "globe", color: .pink, seconds: 5)
+                Button("Show Notification \(counter)") {
+                    
+                    counter += 1
+                    
+                    HMToasts.shared.notification(title: "Custom notification", body: "Notification Body", image: "globe", color: .pink, seconds: 5)
+                }
             }
         }
         .configureHummelToasts()
