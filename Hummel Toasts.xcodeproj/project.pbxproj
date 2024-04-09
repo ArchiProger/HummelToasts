@@ -14,6 +14,7 @@
 		758E08F62BC59017003B98D6 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E08F52BC59017003B98D6 /* ToastView.swift */; };
 		758E08F82BC59099003B98D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E08F72BC59099003B98D6 /* ContentView.swift */; };
 		758E08FB2BC592E6003B98D6 /* ToastsCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E08FA2BC592E6003B98D6 /* ToastsCore.swift */; };
+		758E08FD2BC5A2E7003B98D6 /* ToastWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E08FC2BC5A2E7003B98D6 /* ToastWrapper.swift */; };
 		75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6C12A336DFF001A3908 /* HMToasts.docc */; };
 		75D9F6C82A336DFF001A3908 /* Hummel_Toasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */; };
 		75D9F6CD2A336DFF001A3908 /* HMToastsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D9F6CC2A336DFF001A3908 /* HMToastsTests.swift */; };
@@ -38,6 +39,7 @@
 		758E08F52BC59017003B98D6 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		758E08F72BC59099003B98D6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		758E08FA2BC592E6003B98D6 /* ToastsCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastsCore.swift; sourceTree = "<group>"; };
+		758E08FC2BC5A2E7003B98D6 /* ToastWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWrapper.swift; sourceTree = "<group>"; };
 		75D9F6BD2A336DFF001A3908 /* Hummel_Toasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hummel_Toasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D9F6C02A336DFF001A3908 /* HMToasts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMToasts.h; sourceTree = "<group>"; };
 		75D9F6C12A336DFF001A3908 /* HMToasts.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = HMToasts.docc; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				758E08F72BC59099003B98D6 /* ContentView.swift */,
 				758E08F32BC58FF6003B98D6 /* ToastGroup.swift */,
 				758E08F52BC59017003B98D6 /* ToastView.swift */,
+				758E08FC2BC5A2E7003B98D6 /* ToastWrapper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				758E08FB2BC592E6003B98D6 /* ToastsCore.swift in Sources */,
 				758E08F22BC58FD3003B98D6 /* ToastItem.swift in Sources */,
 				75D9F6C22A336DFF001A3908 /* HMToasts.docc in Sources */,
+				758E08FD2BC5A2E7003B98D6 /* ToastWrapper.swift in Sources */,
 				758E08EE2BC58F64003B98D6 /* PassthroughWindow.swift in Sources */,
 				758E08F42BC58FF6003B98D6 /* ToastGroup.swift in Sources */,
 			);

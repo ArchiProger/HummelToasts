@@ -13,17 +13,30 @@ final class Toast: ObservableObject {
     
     @Published var toasts: [ToastItem] = []
     
-    func present(title: String, symbol: String?, tint: Color = .primary, isUserInteractionEnabled: Bool = false, timing: ToastTime = .medium) {
+    func present(
+        title: String,
+        symbol: String?,
+        tint: Color = .primary,
+        isUserInteractionEnabled: Bool = false,
+        timing: ToastTime = .medium
+    ) {
+        withAnimation(.snappy) {     
+            let view = ToastView(title: title, symbol: symbol, tint: tint)
+            let item = ToastItem(isUserInteractionEnabled: isUserInteractionEnabled, timing: timing, view: .init(view))
+            
+            toasts.append(item)
+        }
+    }
+    
+    func present(
+        isUserInteractionEnabled: Bool = false,
+        timing: ToastTime = .medium,
+        @ViewBuilder content: () -> some View
+    ) {
         withAnimation(.snappy) {
-            toasts.append(
-                .init(
-                    title: title,
-                    symbol: symbol,
-                    tint: tint,
-                    isUserInteractionEnabled: isUserInteractionEnabled,
-                    timing: timing
-                )
-            )
+            let item = ToastItem(isUserInteractionEnabled: isUserInteractionEnabled, timing: timing, view: .init(content()))
+            
+            toasts.append(item)
         }
     }
 }

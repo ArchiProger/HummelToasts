@@ -10,13 +10,9 @@ import SwiftUI
 
 struct ToastItem: Identifiable {
     let id: UUID = .init()
-    /// Custom Properties
-    var title: String
-    var symbol: String?
-    var tint: Color
-    var isUserInteractionEnabled: Bool
-    /// Timing
+    var isUserInteractionEnabled: Bool    
     var timing: ToastTime = .medium
+    var view: AnyView
 }
 
 enum ToastTime: CGFloat {
