@@ -5,7 +5,7 @@
 //  Created by Archibbald on 09.04.2024.
 //
 
-import UIKit
+import SwiftUI
 
 final class PassthroughWindow: UIWindow {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
