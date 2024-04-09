@@ -1,79 +1,67 @@
 //
 //  ToastView.swift
-//  HMToasts
+//  Hummel Toasts
 //
-//  Created by Артур Данилов on 11.06.2023.
+//  Created by Archibbald on 09.04.2024.
 //
 
 import SwiftUI
 
 struct ToastView: View {
-    
-    let toast: HMToastModel
-    
-    @StateObject var toastViewModel: HMToasts = .shared
+    var item: ToastItem
+    /// View Properties
+    @State private var delayTask: DispatchWorkItem?
     
     var body: some View {
-        
-        HStack(spacing: 10) {
-            
-            toast.image
-                .renderingMode(.template)
-                .foregroundStyle(toast.color)
-                .padding(10)
-                .background(toast.color.opacity(0.3))
-                .clipShape(Circle())
-            
-            VStack(alignment: .leading) {
-                
-                Text(toast.title)
-                    .foregroundStyle(Color.primary)
-                    .font(.caption.weight(.bold))
-                
-                Text(toast.body)
-                    .foregroundStyle(toast.color)
-                    .font(.caption2.weight(.bold))
-            }            
-        }
-        .padding([.vertical, .leading], 5)
-        .padding(.trailing, 10)
-        .background(.regularMaterial)
-        .shadow(radius: 10)
-        .overlay {
-            
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(toast.color.opacity(0.7))
-        }
-        .contextMenu([
-            .init(title: "Copy", image: .init(systemName: "doc.on.doc")) { _ in
-                UIPasteboard.general.string = toast.body
-            },
-            
-            .init(title: "Close", image: .init(systemName: "xmark.circle"), attributes: .destructive) { _ in
-                
+        HStack(spacing: 0) {
+            if let symbol = item.symbol {
+                Image(systemName: symbol)
+                    .font(.title3)
+                    .padding(.trailing, 10)
             }
-        ]) {
-            withAnimation {
-                toastViewModel.isToastActive = true
-            }
-        } onDismiss: {
-            withAnimation {
-                toastViewModel.isToastActive = false
+            
+            Text(item.title)
+                .lineLimit(1)
+        }
+        .foregroundStyle(item.tint)
+        .padding(.horizontal, 15)
+        .padding(.vertical, 8)        
+        .contentShape(.capsule)
+        .gesture(
+            DragGesture(minimumDistance: 20)
+                .onEnded({ value in
+                    guard item.isUserInteractionEnabled else { return }
+                    let endY = value.translation.height
+                    let velocityY = value.velocity.height
+                    
+                    if (endY + velocityY) < 100 {
+                        /// Removing Toast
+                        removeToast()
+                    }
+                })
+        )
+        .onAppear {
+            guard delayTask == nil else { return }
+            delayTask = .init(block: {
+                removeToast()
+            })
+            
+            if let delayTask {
+                DispatchQueue.main.asyncAfter(deadline: .now() + item.timing.rawValue, execute: delayTask)
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        /// Limiting Size
+        .frame(maxWidth: UIScreen.main.bounds.width * 0.7)
+        .transition(.offset(y: -100))
     }
-}
-
-struct ToastView_preview: PreviewProvider {
     
-    static var previews: some View {
+    func removeToast() {
+        if let delayTask {
+            delayTask.cancel()
+        }
         
-        ZStack {
-            
-            Color.gray.ignoresSafeArea()
-            
-            ToastView(toast: HMToasts.NotificationStyle.info.generateToast(title: "Error", body: "Notification Body"))
+        withAnimation(.snappy) {
+            Toast.shared.toasts.removeAll(where: { $0.id == item.id })
         }
     }
 }

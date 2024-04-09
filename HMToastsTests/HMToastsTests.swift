@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import HMToasts
 
 final class HMToastsTests: XCTestCase {
 
