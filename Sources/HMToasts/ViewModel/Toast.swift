@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-final class Toast: ObservableObject {
-    static let shared = Toast()
+public final class Toast: ObservableObject {
+    public static let shared = Toast()
     
     @Published var toasts: [ToastItem] = []
     
-    func present(
+    public func present(
         title: String,
         symbol: String?,
         tint: Color = .primary,
@@ -28,7 +28,7 @@ final class Toast: ObservableObject {
         }
     }
     
-    func present(
+    public func present(
         isUserInteractionEnabled: Bool = false,
         timing: ToastTime = .medium,
         @ViewBuilder content: () -> some View

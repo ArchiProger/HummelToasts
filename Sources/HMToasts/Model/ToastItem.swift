@@ -15,7 +15,7 @@ struct ToastItem: Identifiable {
     var view: AnyView
 }
 
-enum ToastTime: CGFloat {
+public enum ToastTime: CGFloat {
     case short = 1.0
     case medium = 3.0
     case long = 5.0

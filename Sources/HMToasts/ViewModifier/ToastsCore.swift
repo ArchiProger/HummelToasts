@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     @ViewBuilder
     func initializeToasts() -> some View {
         self
