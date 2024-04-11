@@ -11,9 +11,13 @@ struct ToastWrapper: View {
     var item: ToastItem
     /// View Properties
     @State private var delayTask: DispatchWorkItem?
+    @State private var size: CGSize = .zero
     
     var body: some View {
         item.view
+            .size { size in
+                self.size = size
+            }
             .gesture(
                 DragGesture(minimumDistance: 20)
                     .onEnded { value in
@@ -38,7 +42,7 @@ struct ToastWrapper: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + item.timing.rawValue, execute: delayTask)
                 }
             }                    
-            .transition(.offset(y: -100))
+            .transition(.offset(y: -100 - size.height))
     }
     
     func removeToast() {
