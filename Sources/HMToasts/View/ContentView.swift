@@ -38,11 +38,12 @@ struct ContentView: View {
                 }
             }
         }
-        .initializeToasts()
         .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .initializeToasts()
+        .preferredColorScheme(.dark)
 }
