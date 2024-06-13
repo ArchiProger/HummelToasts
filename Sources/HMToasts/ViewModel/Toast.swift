@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 public final class Toast: ObservableObject {
     public static let shared = Toast()
     
