@@ -16,7 +16,7 @@ public extension View {
 }
 
 fileprivate struct RootViewModifier: ViewModifier {
-    @State private var overlayWindow: UIWindow?
+    @State var overlayWindow: UIWindow?
     
     @Environment(\.colorScheme) var scheme
     
@@ -43,6 +43,7 @@ fileprivate struct RootViewModifier: ViewModifier {
         window.isUserInteractionEnabled = true
         window.tag = 1009
         window.overrideUserInterfaceStyle = .init(scheme)
+        window.windowLevel = .alert
         
         overlayWindow = window
     }
@@ -50,8 +51,8 @@ fileprivate struct RootViewModifier: ViewModifier {
     private func onSchemeChange(scheme: ColorScheme?) {
         guard let overlayWindow else { return }
         
-        UIView.transition(with: overlayWindow, duration: 0.3, options: .transitionCrossDissolve) {
-            overlayWindow.overrideUserInterfaceStyle = .init(scheme)
+        UIView.transition(with: overlayWindow, duration: 0.3, options: .transitionCrossDissolve) { [weak overlayWindow] in
+            overlayWindow?.overrideUserInterfaceStyle = .init(scheme)
         }
     }
 }
